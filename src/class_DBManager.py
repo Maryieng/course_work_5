@@ -43,7 +43,7 @@ class DBManager():
             vacancy_id_hh integer PRIMARY KEY,
             company_id_hh integer,
             vacancy_name varchar(150),
-            data_published varchar(150),
+            data_published date,
             salary_average integer,
             area varchar(150),
             url varchar(150),
@@ -141,7 +141,7 @@ class DBManager():
         cur.execute(f'''SELECT company_name, vacancy_name, salary_average, url
         FROM vacancies
         JOIN companies USING (company_id_hh)
-        WHERE vacancy_name LIKE '%{word}%' OR vacancy_name LIKE '{word}%' OR vacancy_name LIKE '%{word}';''')
+        WHERE vacancy_name LIKE '%{word.lower()}%' OR vacancy_name LIKE '%{word.title()}%' OR vacancy_name LIKE '%{word.upper()}%';''')
         pprint(cur.fetchall())
         cur.close()
         conn.close()
