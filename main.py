@@ -1,7 +1,6 @@
 from src.class_hh_api import HH_API
 from src.class_DBManager import DBManager
 from src.utils import load_companies, config
-from pprint import pprint
 from src.class_vacancy import Vacancy
 
 
@@ -64,9 +63,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-    #[postgresql]
-    #host = localhost
-    #user = postgres
-    #password = 1985
-    #port = 5432

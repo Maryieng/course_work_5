@@ -19,7 +19,3 @@ class HH_API():
             return response_data['items']
         else:
             return []
-
-
-    def get_company_info(self, id):
-        pass
