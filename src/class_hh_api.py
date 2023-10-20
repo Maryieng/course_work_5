@@ -1,15 +1,19 @@
 import requests
 import json
-from pprint import pprint
 
-class HH_API():
+
+class HH_API:
+    """
+    This class for getting information from headhanter API
+    """
     HH_API_URL = 'https://api.hh.ru/vacancies'
 
-    def __init__(self):
-        pass
-
-
-    def get_all_vacancies(self, id):
+    def get_all_vacancies(self, id: int):
+        """
+        Getting information about vacancies with params.
+        :param id: int
+        :return: dict
+        """
         params = {'per_page': 100,
                   'page': 0,
                   'employer_id': id

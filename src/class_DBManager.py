@@ -2,9 +2,12 @@ import psycopg2
 from pprint import pprint
 
 
-class DBManager():
+class DBManager:
+    """
+    This class for creating and managing database
+    """
 
-    def __init__(self, database_name, params):
+    def __init__(self, database_name: str, params: dict):
         self.name = database_name
         self.params = params
         self.create_database()
@@ -12,6 +15,10 @@ class DBManager():
         self.create_table_vacancies()
 
     def create_database(self):
+        """
+        This method for creating database
+        :return: None
+        """
         conn = psycopg2.connect(**self.params)
         conn.autocommit = True
         cur = conn.cursor()
@@ -24,6 +31,10 @@ class DBManager():
         self.params.update({'dbname': self.name})
 
     def create_table_companies(self):
+        """
+        This method for creating table of companies
+        :return:
+        """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
         cur.execute('''CREATE TABLE companies (
@@ -37,6 +48,10 @@ class DBManager():
         conn.close()
 
     def create_table_vacancies(self):
+        """
+        This method for creating table of vacancies
+        :return:
+        """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
         cur.execute('''CREATE TABLE vacancies (
@@ -58,7 +73,12 @@ class DBManager():
         cur.close()
         conn.close()
 
-    def insert_data_company(self, data):
+    def insert_data_company(self, data: dict):
+        """
+        This method for inserting data in table of companies
+        :param data: dict
+        :return: None
+        """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
 
@@ -69,7 +89,12 @@ class DBManager():
         cur.close()
         conn.close()
 
-    def insert_data_vacancy(self, vacancies):
+    def insert_data_vacancy(self, vacancies: list):
+        """
+        This method for inserting data in table of vacancies
+        :param data: list of objects
+        :return: None
+        """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
         for vacancy in vacancies:
@@ -91,6 +116,10 @@ class DBManager():
         conn.close()
 
     def get_companies_and_vacancies_count(self):
+        """
+        This method for getting companies with count of vacancies
+        :return: None
+        """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
         cur.execute('''SELECT company_name, COUNT(*)
@@ -102,6 +131,10 @@ class DBManager():
         conn.close()
 
     def get_all_vacancies(self):
+        """
+        This method for getting all vacancies
+        :return: None
+        """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
         cur.execute('''SELECT company_name, vacancy_name, salary_average, url
@@ -112,6 +145,10 @@ class DBManager():
         conn.close()
 
     def get_avg_salary(self):
+        """
+        This method for getting average salary of vacancies
+        :return: None
+        """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
         cur.execute('''SELECT AVG(salary_average)
@@ -122,6 +159,10 @@ class DBManager():
         conn.close()
 
     def get_vacancies_with_higher_salary(self):
+        """
+        This method for getting vacancies which have salary higher than average salary of vacancies
+        :return: None
+        """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
         cur.execute('''SELECT company_name, vacancy_name, salary_average, url
@@ -135,7 +176,11 @@ class DBManager():
         cur.close()
         conn.close()
 
-    def get_vacancies_with_keyword(self, word):
+    def get_vacancies_with_keyword(self, word: str):
+        """
+        This method for getting vacancies which word in name of vacancy
+        :return: None
+        """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
         cur.execute(f'''SELECT company_name, vacancy_name, salary_average, url

@@ -1,15 +1,20 @@
 import json
-from src.class_hh_api import HH_API
-from pprint import pprint
 from configparser import ConfigParser
 import os
 
 
-def config(filename="data/database.ini", section="postgresql"):
-    # create a parser
+def config(filename: str = "data/database.ini", section: str = "postgresql"):
+    """
+    This function for getting parameters of database
+    :param filename:str
+    :param section:str
+    :return:dict
+    """
 
+    # create a parser
     path_absolute = os.path.abspath(filename)
     parser = ConfigParser()
+
     # read config file
     parser.read(path_absolute)
     db = {}
@@ -23,12 +28,22 @@ def config(filename="data/database.ini", section="postgresql"):
     return db
 
 
-def load_companies(filename):
+def load_companies(filename: str):
+    """
+    This function for getting companies from file
+    :param filename: str
+    :return: dict
+    """
     result = load_jsonfile(filename)
     return result
 
 
-def load_jsonfile(filename):
+def load_jsonfile(filename: str):
+    """
+    This function for load data from json file
+    :param filename: str
+    :return: dict
+    """
     with open(filename, 'r', encoding='UTF-8') as file:
         result = json.load(file)
     return result
