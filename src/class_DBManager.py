@@ -17,7 +17,6 @@ class DBManager:
     def create_database(self):
         """
         This method for creating database
-        :return: None
         """
         conn = psycopg2.connect(**self.params)
         conn.autocommit = True
@@ -33,7 +32,6 @@ class DBManager:
     def create_table_companies(self):
         """
         This method for creating table of companies
-        :return:
         """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
@@ -50,7 +48,6 @@ class DBManager:
     def create_table_vacancies(self):
         """
         This method for creating table of vacancies
-        :return:
         """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
@@ -76,8 +73,6 @@ class DBManager:
     def insert_data_company(self, data: dict):
         """
         This method for inserting data in table of companies
-        :param data: dict
-        :return: None
         """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
@@ -92,8 +87,6 @@ class DBManager:
     def insert_data_vacancy(self, vacancies: list):
         """
         This method for inserting data in table of vacancies
-        :param data: list of objects
-        :return: None
         """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
@@ -118,7 +111,6 @@ class DBManager:
     def get_companies_and_vacancies_count(self):
         """
         This method for getting companies with count of vacancies
-        :return: None
         """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
@@ -133,7 +125,6 @@ class DBManager:
     def get_all_vacancies(self):
         """
         This method for getting all vacancies
-        :return: None
         """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
@@ -147,7 +138,6 @@ class DBManager:
     def get_avg_salary(self):
         """
         This method for getting average salary of vacancies
-        :return: None
         """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
@@ -161,7 +151,6 @@ class DBManager:
     def get_vacancies_with_higher_salary(self):
         """
         This method for getting vacancies which have salary higher than average salary of vacancies
-        :return: None
         """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
@@ -179,7 +168,6 @@ class DBManager:
     def get_vacancies_with_keyword(self, word: str):
         """
         This method for getting vacancies which word in name of vacancy
-        :return: None
         """
         conn = psycopg2.connect(**self.params)
         cur = conn.cursor()
