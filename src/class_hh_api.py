@@ -10,9 +10,7 @@ class HH_API:
 
     def get_all_vacancies(self, id: int):
         """
-        Getting information about vacancies with params.
-        :param id: int
-        :return: dict
+        Getting information about vacancies with params
         """
         params = {'per_page': 100,
                   'page': 0,
