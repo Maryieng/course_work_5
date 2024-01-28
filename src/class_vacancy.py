@@ -44,8 +44,7 @@ Url - {self.url}
 
     def salary_average(self):
         """
-        Calculates average salary.
-        :return: average salary
+        Calculates average salary
         """
         if self.salary_from:
             if self.salary_to:
@@ -64,8 +63,6 @@ Url - {self.url}
     def create_vacancy_from_hh(cls, vacancy_info_hh: dict):
         """
         This classmethod is converting information about vacancy from headhunter and creating object Vacancy
-        :param vacancy_info_hh: dict with information about vacancy
-        :return: object Vacancy
         """
         result = {
             "id": cls.check_for_availability(vacancy_info_hh, "id"),
@@ -91,10 +88,6 @@ Url - {self.url}
     def check_for_availability(vacancy_information: dict, param1: str, param2: str = None, param3: str = None):
         """
         This staticmethod use during creating object Vacancy. Checking param for availability.
-        :param vacancy_information: dict
-        :param param1: str
-        :param param2: str
-        :return: parameter or None
         """
         try:
             if param3 is None:
